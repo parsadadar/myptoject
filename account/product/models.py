@@ -13,7 +13,7 @@ class subcategory(models.Model):
 
 
 class product(models.Model):
-    id = models.IntegerField(primary_key=Tre, unique=True, verbose_name="کد محصول")
+    id = models.IntegerField(primary_key=True, unique=True, verbose_name="کد محصول")
     name = models.CharField(max_length=50, verbose_name="نام محصول")
     count = models.SmallIntegerField(verbose_name="تعداد")
     images = models.ImageField(path_to="", upload_to='/', verbose_name='عکس محصول')
