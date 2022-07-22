@@ -17,3 +17,7 @@ def logt(req):
 
 def user(req,id):
     return  HttpResponse('user:'+str(id))
+
+
+def adi(req):
+    return  HttpResponse('add your user')
