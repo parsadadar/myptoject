@@ -1,10 +1,8 @@
 from django.urls import path
-from members import views
+
+from . import views
 
 urlpatterns = [
-    path('', views.halo, name='member_helo'),
-    path('log/',views.log, name='member_log'),
-    path('logt/', views.logt, name='member_logout'),
-    path('user/<int:id>/',views.user, name='member_user'),
-    path('adi/',views.adi, name='member_user')
+    path('<int:cod>/', views.special_num),
+    path('<str:cod>/', views.special,name='010123'),
 ]
