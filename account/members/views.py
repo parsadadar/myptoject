@@ -8,6 +8,8 @@ vips={
     'a':'stiv_jobs',
     'b':'bill_gates',
     'c':'ahmad_zoqi',
+    'd':'parsa_dadar',
+    'e':'jeyzi',
 }
 
 
@@ -20,14 +22,16 @@ def special_num(req,cod):
     return HttpResponseRedirect(f'/vip/{redirect_vip}')
 
 
-def special(req,cod):
-    vip_found=vips.get(cod)
-    if vip_found is not None:    
-        context={
-            "data":vip_found
-        }
-        return render(req,"members/vips.html",context)
-    return HttpResponseNotFound('not found, try another vip code.')
+def spec(req):
+    vip_list=list(vips.keys())
+    context={
+        "vips":vip_list
+    }
+    return render(req,'members/vips.html',context)
 
 def adm(req):
     return render(req,'members/member.html')
+
+def special(req,cod):
+    vip_cd=vips.get(cod)
+    return HttpResponse(f'vip cod is {vip_cd}')
