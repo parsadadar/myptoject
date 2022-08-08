@@ -1,7 +1,8 @@
-from urllib import response
+from multiprocessing import context
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import render
 from django.urls import reverse
+
 
 vips={
     'a':'stiv_jobs',
@@ -15,13 +16,18 @@ def special_num(req,cod):
     if cod > len(vip_codd):
         return HttpResponseNotFound('this code is not exists.')
     redirect_vip = vip_codd[cod - 1]
-    redirect_url = reverse('010123', lis=[redirect_vip])
+    redirect_url = reverse('010123', args=[redirect_vip])
     return HttpResponseRedirect(f'/vip/{redirect_vip}')
 
 
 def special(req,cod):
     vip_found=vips.get(cod)
     if vip_found is not None:    
-        response_data = f'<h1 style="color:blue">user:{cod} is {vip_found}</h1>'
-        return HttpResponse(response_data)
+        context={
+            "data":vip_found
+        }
+        return render(req,"members/vips.html",context)
     return HttpResponseNotFound('not found, try another vip code.')
+
+def adm(req):
+    return render(req,'members/member.html')
