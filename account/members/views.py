@@ -1,15 +1,16 @@
 from multiprocessing import context
+import re
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
 
 vips={
-    'a':'stiv_jobs',
-    'b':'bill_gates',
-    'c':'ahmad_zoqi',
-    'd':'parsa_dadar',
-    'e':'jeyzi',
+    'a21':'stiv_jobs',
+    'b32':'bill_gates',
+    'c54':'ahmad_zoqi',
+    'd18':'parsa_dadar',
+    'e13':'jeyzi',
 }
 
 
@@ -34,4 +35,9 @@ def adm(req):
 
 def special(req,cod):
     vip_cd=vips.get(cod)
-    return HttpResponse(f'vip cod is {vip_cd}')
+    if vip_cd is not None:
+        context={
+            'data': f'COD {cod}',
+            'cod':f'vip cod is for {vip_cd}',
+        }
+        return render(req,'members/helo.html',context)

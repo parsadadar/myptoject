@@ -10,9 +10,10 @@
         <ul>
             {% for id in vips %}
             <li>
-                <a href="/vip/{{id}}">{{id|title}}</a>
+                <a href="{% url '010123' id %}">{{id|title}}</a>
             </li>
             {% endfor %}
+            <li><a href='adm/'>admin site</a></li>
         </ul>
     </body>
 </html>
