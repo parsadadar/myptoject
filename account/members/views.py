@@ -31,7 +31,7 @@ def spec(req):
     return render(req,'members/vips.html',context)
 
 def adm(req):
-    return render(req,'members/member.html')
+    return render(req,'members/admin_site.html')
 
 def special(req,cod):
     vip_cd=vips.get(cod)
