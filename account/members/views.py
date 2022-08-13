@@ -37,7 +37,9 @@ def special(req,cod):
     vip_cd=vips.get(cod)
     if vip_cd is not None:
         context={
-            'data': f'COD {cod}',
-            'cod':f'vip cod is for {vip_cd}',
+            'data': f'vip id is {vip_cd}',
+            'cod':f'vip cod is {cod}',
         }
         return render(req,'members/helo.html',context)
+    
+    return HttpResponseNotFound('this code is not exists.')
