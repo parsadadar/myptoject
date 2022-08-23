@@ -1,11 +1,11 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
 
 app_name= "product"
 
 urlpatterns = [
     path('', views.index,name=''),
-    path('details/<int:id>', details,name='details'),
-    path('delete/<int:id>/', delete ),
-    path('/update<int:id>/', update,name='010123'),
+    path('details/<int:id>', views.details,name='details'),
+    path('delete/<int:id>/', views.delete ),
+    path('update<int:id>/', views.update,name='010123'),
 ]
