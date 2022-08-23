@@ -1,9 +1,10 @@
-from multiprocessing import context
-import re
+from urllib import response
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
-
+from django.template.loader import render_to_string
+from django.contrib.auth import login,authenticate
+from django.contrib.auth.models import User
 
 vips={
     'a21':'stiv_jobs',
@@ -12,6 +13,7 @@ vips={
     'd18':'parsa_dadar',
     'e13':'jeyzi',
 }
+
 
 
 def special_num(req,cod):
@@ -35,11 +37,64 @@ def adm(req):
 
 def special(req,cod):
     vip_cd=vips.get(cod)
-    if vip_cd is not None:
-        context={
-            'data': f'vip id is {vip_cd}',
-            'cod':f'vip cod is {cod}',
-        }
-        return render(req,'members/helo.html',context)
-    
-    return HttpResponseNotFound('this code is not exists.')
+    if vip_cd is None:
+        response_data=render_to_string('erors/404.html')
+        return HttpResponseNotFound(response_data)
+    context={
+        'data': f'vip id is {vip_cd}',
+        'cod':f'vip cod is {cod}',
+    }
+    return render(req,'members/helo.html',context)
+
+
+
+
+
+def user_login(req):
+    if req.method == "POST":
+        form = LoginForm(req.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(req, username = cd['username'], password = cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(req, user)
+                    return redirect
+                else:
+                    return HttpResponse('user is not active')
+            else:
+                return HttpResponse('information is not valid ')
+    else:
+        form = LoginForm()
+    return render(req, 'account/welcom.html',{'form':form})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
