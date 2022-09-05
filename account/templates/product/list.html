@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>list of products</title>
+        <style>
+            .row{
+                display: block;
+                position: relative;
+            }
+            .title{
+                font-size: 18px;
+                font-weight: bold;
+                color: #c2dbf1;
+                background-color: #293332;
+                width: 100px;
+                display: inline-block;
+                position: relative;
+                text-align: center;
+            }
+            .field{
+                width: 100px;
+                display: inline-block;
+                position: relative;
+                text-align: center;
+            }
+            .aa{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>list of products</h1>
+        <span class="aa">
+        <ul><a href="/" >home</a> </ul>
+        </span>
+        <div>
+            <p class='row'>
+                <span class="title">ID</span>
+                <span class="title">Name</span>
+                <span class="title">Price</span>
+                <span class="title">image</span>
+                <span class="title">Count</span>
+                <span class="title">Conten</span>
+            </p>
+            {% for product in page_obj %}
+             <p class='row'>
+                <span class="field">{{ product.id}}</span>
+                <span class="field">{{ product.name}}</span>
+                <span class="field">{{ product.amount}}</span>
+                <span class="field"><img width="50px" height="50px" src="{{ product.images.url }}" alt="{{ product.name }}"></span>
+                <span class="field">{{ product.count}}</span>
+                <span class="field">{{ product.conten}}</span>
+            </p>
+            {% endfor %}
+        </div>
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?dadar=1">&laquo; first</a>
+            <a href="?dadar={{ page_obj.previous_page_number}}">previous</a>
+        {% endif %}
+            <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages}}. </span>
+            {% if page_obj.has_next %}
+                <a href="?dadar={{ page_obj.next_page_number }}">next</a>
+                <a href="?dadar={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+    </span>
+    </div>
+    <script>
+    {#let pro_delete = document.getElementById("pro_delete");#}
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+
+
+    {#function pro_delete (id){#}
+    {#   // Old compatibility code, no longer needed.#}
+    {#    if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+, etc.#}
+    {#        httpRequest = new XMLHttpRequest();#}
+    {#    } else if (window.ActiveXObject) { // IE 6 and older#}
+    {#        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");#}
+    {#    }#}
+    {#    httpRequest.onreadystatechange = () => {#}
+    {#        // Process the server response here.#}
+    {#        if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {#}
+    {#            console.log(httpRequest.responseText);#}
+    {#        } else {#}
+    {#            // Not ready yet.#}
+    {#            console.log(httpRequest.readyState, httpRequest.status);#}
+    {#        }#}
+    {#    };#}
+    {#    httpRequest.open('POST', '/product/delete/'+id, true);#}
+    {#    httpRequest.send("csrfmiddlewaretoken":csrftoken);#}
+    {#}#}
+        function pro_delete (id) {
+            console.log("injam");
+            $.post('/product/delete/' + id,
+                {
+                    csrfmiddlewaretoken: csrftoken
+                },
+                function (data, status) {
+                    if(data === "OK"){
+                        document.getElementById("pro_"+id).style.display = "none";
+                    }
+
+
+                }
+            );
+        }
+
+</script>
+    </body>
+</html>

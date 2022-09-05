@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Products [{{ product.id }}]</title>
+
+</head>
+<body>
+<form action="{% url 'product:update' product.id %}" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="name">
+            Products Name:
+        </label>
+        <input name="name" value="{{ product.name }}" id="name">
+    </p>
+    <p>
+        <label for="count">
+            Products count:
+        </label>
+        <input name="count" value="{{ product.count }}" id="count">
+    </p>
+    <p>
+        <label for="price">
+            Products price:
+        </label>
+        <input name="amount" value="{{ product.amount }}" id="amount">
+    </p>
+    <button type="button" onclick="redirect_to()">Cancel</button>
+    <button type="submit">Update</button>
+
+</form>
+<script>
+    function redirect_to() {
+        window.location = "{% url 'product:list' %}";
+    }
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.template.loader import render_to_string
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from .forms import LoginForm
 
@@ -21,7 +21,7 @@ def signup(req):
         if username and password and email:
             user = User.objects.create_user(username, password, email)
             user.save()
-            return redirect("login")
+            return redirect(req,"site/login.html")
         else:
             return redirect("sign_up")
     return render(req, "site/sign_up.html")
@@ -37,7 +37,7 @@ def user_login(req):
             if user is not None:
                 if user.is_active:
                     login(req, user)
-                    return redirect('home')
+                    return redirect(req,'account/home.html')
                 else:
                     return HttpResponse('user is not active')
             else:
@@ -45,3 +45,10 @@ def user_login(req):
     else:
         form = LoginForm()
     return render(req, 'site/login.html', {'form': form})
+
+
+def log_out(req):
+    logout(req)
+    return render(req, 'site/logout.html')
+
+

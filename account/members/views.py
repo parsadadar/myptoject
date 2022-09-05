@@ -50,23 +50,7 @@ def special(req,cod):
 
 
 
-def user_login(req):
-    if req.method == "POST":
-        form = LoginForm(req.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(req, username = cd['username'], password = cd['password'])
-            if user is not None:
-                if user.is_active:
-                    login(req, user)
-                    return redirect
-                else:
-                    return HttpResponse('user is not active')
-            else:
-                return HttpResponse('information is not valid ')
-    else:
-        form = LoginForm()
-    return render(req, 'account/welcom.html',{'form':form})
+
 
 
 

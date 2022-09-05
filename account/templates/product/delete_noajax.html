@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Products [{{ prcodut.id }}]</title>
+</head>
+<body>
+<p>You want to delete this Product [{{ product.name }}]</p>
+<form action="{% url 'product:delete' product.id %} ">
+    <button type="submit">Yes! Deleted</button>
+    <button type="button" onclick="redirect_to()">Cancel</button>
+</form>
+
+<script>
+    function redirect_to() {
+        window.location = "{% url 'product:list' %}";
+    }
+</script>
+</body>
+</html>

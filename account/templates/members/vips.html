@@ -4,7 +4,7 @@
 {% block content %}
 <ul>    
     {% for id in vips %}
-    <li><a href="{% url '010123' id %}">{{id|title}}</a></li>
+    <li><a href="{% url 'members:010123' id %}">{{id|title}}</a></li>
     {% endfor %}
     <li><a href='adm/'>admin site</a></li>
 </ul>
