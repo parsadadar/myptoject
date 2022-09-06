@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="What we Do">
+    <meta name="description" content="">
+    <title>Contact</title>
+    <link rel="stylesheet" href="{% static "css2/nicepage.css" %}" media="screen">
+<link rel="stylesheet" href="{% static "css2/Contact.css" %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static "js2/jquery.js" %}"></script>
+    <script class="u-script" type="text/javascript" src="{% static "js2/nicepage.js" %}"></script>
+    <meta name="generator" content="Nicepage 4.17.10, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster:400">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/default-logo.png"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Contact">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-fc41"><div class="u-clearfix u-sheet u-sheet-1">
+        <a href="/" class="u-image u-logo u-image-1">
+{#          <img src={% static "images2/default-logo.png" %} class="u-logo-image u-logo-image-1">#}
+        </a>
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-position="HOME">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 700; text-transform: uppercase;">
+            <a class="u-button-style u-custom-active-border-color u-custom-active-color u-custom-border u-custom-border-color u-custom-borders u-custom-hover-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-decoration u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-spacing-30 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-border-2 u-border-active-palette-1-base u-border-grey-90 u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base" href="{% url "home" %}" style="padding: 10px 0px;">HOME</a>
+                {% if not user.is_authenticated  %}
+                    </li><li class="u-nav-item"><a class="u-border-2 u-border-active-palette-1-base u-border-grey-90 u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base" href="{% url "sign_up" %}" style="padding: 10px 0px;">SIGN UP</a>
+                    </li><li class="u-nav-item"><a class="u-border-2 u-border-active-palette-1-base u-border-grey-90 u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base" href="{% url "login" %}" style="padding: 10px 0px;">LOGIN</a>
+                    </li></ul>
+                {% endif %}
+          </div>
+            <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url "home" %}">HOME</a>
+                {% if not user.is_authenticated  %}
+                    </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url "login" %}">LOGIN</a>
+                    </li><li class="u-nav-item"><a class="u-button-style u-nav-link"href="{% url "sign_up" %}">SIGN UP</a>
+                    </li></ul>
+                {% endif %}
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+      </div></header>
+    <section class="u-clearfix u-image u-section-1" id="carousel_d1a7" data-image-width="660" data-image-height="825">
+      <h2 class="u-align-left u-text u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1000">SHOP</h2>
+      <h2 class="infinite u-align-left u-text u-text-2" data-animation-name="pulse" data-animation-duration="3500" data-animation-direction="" data-animation-delay="0">DADAR</h2>
+      <h2 class="u-align-left u-text u-text-3" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-direction="Right">ebook</h2>
+      <img class="u-image u-image-round u-radius-38 u-image-1" src="{% static "images2/download1.jfif" %}" alt="" data-image-width="540" data-image-height="1200">
+      <h1 class="u-align-left u-text u-text-default u-title u-text-4">
+        <a class="u-active-none u-border-2 u-border-palette-2-base u-btn u-button-style u-hover-none u-none u-text-palette-2-base u-btn-1" href={% url 'product:all_books' %} >DRAMA<span class="u-text-palette-2-base"></span>
+        </a>
+      </h1>
+    </section>
+    <section class="u-align-center u-clearfix u-section-2" src="" id="sec-9a71">
+      <img class="u-image u-image-1" src="{% static "images2/ThePeriodofRenessaince.jfif" %}" data-image-width="1200" data-image-height="1800">
+      <img class="u-image u-image-round u-radius-43 u-image-2" src="{% static "images2/StatueofZeusIfWallsCouldTalkbyFotisPapadopoulos.jfif" %}" alt="" data-image-width="768" data-image-height="1280">
+      <img class="u-image u-image-round u-radius-50 u-image-3" src="{% static "images2/Wallpaperin2022_CoolwallpaperscartoonCartoonwallpaperhdCartoonwallpaper.png" %}" alt="" data-image-width="637" data-image-height="1080">
+      <div id="carousel-bd35" data-interval="5000" data-u-ride="carousel" class="u-carousel u-slider u-slider-1">
+        <ol class="u-absolute-hcenter u-carousel-indicators u-hidden u-carousel-indicators-1">
+          <li data-u-target="#carousel-bd35" class="u-active u-grey-30" data-u-slide-to="0"></li>
+          <li data-u-target="#carousel-bd35" class="u-grey-30" data-u-slide-to="1"></li>
+          <li data-u-target="#carousel-bd35" class="u-grey-30" data-u-slide-to="2"></li>
+        </ol>
+        <div class="u-carousel-inner" role="listbox">
+          <div class="u-active u-carousel-item u-container-style u-slide u-carousel-item-1">
+            <div class="u-container-layout u-valign-top u-container-layout-1">
+              <h2 class="u-custom-font u-font-georgia u-subtitle u-text u-text-1">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-black u-text-palette-2-base u-btn-1" href="https://nicepage.com">1984<span style="font-size: 2.25rem;"></span>
+                  <br>
+                </a>
+              </h2>
+              <img class="u-expanded-width u-image u-image-round u-radius-10 u-image-4" src="{% static "images2/1984GeorgeOrwell.jfif" %}" alt="" data-image-width="1136" data-image-height="1522" data-href="https://nicepage.com">
+            </div>
+          </div>
+          <div class="u-align-left u-carousel-item u-container-style u-slide u-carousel-item-2">
+            <div class="u-container-layout u-container-layout-2">
+              <img class="u-image u-image-round u-radius-10 u-image-5" src="{% static "images2/DownloadRefazendoCapas.jfif" %}" alt="" data-image-width="1357" data-image-height="1920">
+              <h2 class="u-custom-font u-font-lobster u-subtitle u-text u-text-default u-text-2"><span class="u-icon"></span>&nbsp;<a class="u-active-none u-border-2 u-border-palette-5-base u-btn u-button-style u-hover-none u-none u-text-active-grey-30 u-text-hover-palette-5-light-1 u-text-palette-1-light-2 u-btn-2" href="https://nicepage.com">coraline</a>
+              </h2>
+            </div>
+          </div>
+          <div class="u-carousel-item u-container-style u-slide u-carousel-item-3">
+            <div class="u-container-layout u-container-layout-3">
+              <img class="u-image u-image-round u-radius-10 u-image-6" src="{% static "images2/SPINE-LukeBirdEmbracesMinimalismtoCreateaCoverforPew.png" %}" alt="" data-image-width="1500" data-image-height="1925">
+              <h2 class="u-subtitle u-text u-text-default u-text-3">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-active-grey-25 u-text-body-alt-color u-text-hover-grey-70 u-btn-3" href="https://nicepage.com">Catherine Lacey<br>
+                </a>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-60 u-icon-circle u-spacing-9 u-carousel-control-1" href="#carousel-bd35" role="button" data-u-slide="prev">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 477.175 477.175"><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+                    c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"></path></svg>
+          </span>
+          <span class="sr-only">+Previous</span>
+        </a>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-60 u-icon-circle u-spacing-9 u-carousel-control-2" href="#carousel-bd35" role="button" data-u-slide="next">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 477.175 477.175"><path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
+                    c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"></path></svg>
+          </span>
+          <span class="sr-only">+Next</span>
+        </a>
+      </div>
+      <div id="carousel-e0de" data-interval="5000" data-u-ride="carousel" class="u-carousel u-slider u-slider-2">
+        <ol class="u-absolute-hcenter u-carousel-indicators u-hidden u-carousel-indicators-2">
+          <li data-u-target="#carousel-e0de" class="u-active u-grey-30" data-u-slide-to="0"></li>
+          <li data-u-target="#carousel-e0de" class="u-grey-30" data-u-slide-to="1"></li>
+          <li data-u-target="#carousel-e0de" class="u-grey-30" data-u-slide-to="2"></li>
+        </ol>
+        <div class="u-carousel-inner" role="listbox">
+          <div class="u-active u-carousel-item u-container-style u-slide u-carousel-item-4">
+            <div class="u-container-layout u-valign-top u-container-layout-4">
+              <img class="u-image u-image-round u-radius-10 u-image-7" src="{% static "images2/GeorgeOrwell-1984.jfif" %}" alt="" data-image-width="1400" data-image-height="2165">
+              <h2 class="u-custom-font u-font-georgia u-subtitle u-text u-text-default u-text-palette-2-light-1 u-text-4">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-active-palette-2-dark-2 u-text-hover-palette-2-dark-3 u-text-palette-2-light-1 u-btn-4" href="https://nicepage.com">&nbsp;NINTEEN EGHTY FOUR </a>
+              </h2>
+            </div>
+          </div>
+          <div class="u-carousel-item u-container-style u-slide u-carousel-item-5">
+            <div class="u-container-layout u-container-layout-5">
+              <img class="u-image u-image-round u-radius-10 u-image-8" src={% static "images2/TheOldManAndTheSea_BookCover_KatiLaceyFreelanceDesigner.jfif" %} alt="" data-image-width="900" data-image-height="1377">
+              <h2 class="u-custom-font u-font-georgia u-subtitle u-text u-text-default u-text-5">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-active-palette-4-light-1 u-text-hover-white u-text-palette-4-base u-btn-5" href="https://nicepage.com">the old man<br>
+                </a>
+              </h2>
+            </div>
+          </div>
+          <div class="u-carousel-item u-container-style u-slide u-carousel-item-6">
+            <div class="u-container-layout u-container-layout-6">
+              <img class="u-expanded-width u-image u-image-round u-radius-24 u-image-9" src="{% static "images2/TheAcademyofBookCoverDesignannouncesitscoversoftheyear.png" %}" alt="" data-image-width="529" data-image-height="833">
+              <h2 class="u-custom-font u-font-georgia u-subtitle u-text u-text-default u-text-6">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-active-grey-40 u-text-grey-15 u-text-hover-grey-70 u-btn-6" href="https://nicepage.com">dark pines<span class="u-text-grey-10"></span>
+                </a>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-60 u-icon-circle u-spacing-9 u-carousel-control-3" href="#carousel-e0de" role="button" data-u-slide="prev">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 477.175 477.175"><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+                    c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"></path></svg>
+          </span>
+          <span class="sr-only">+Previous</span>
+        </a>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-60 u-icon-circle u-spacing-9 u-carousel-control-4" href="#carousel-e0de" role="button" data-u-slide="next">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 477.175 477.175"><path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
+                    c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"></path></svg>
+          </span>
+          <span class="sr-only">+Next</span>
+        </a>
+      </div>
+      <div id="carousel-31dd" data-interval="5000" data-u-ride="carousel" class="u-carousel u-slider u-slider-3">
+        <ol class="u-absolute-hcenter u-carousel-indicators u-hidden u-carousel-indicators-3">
+          <li data-u-target="#carousel-31dd" class="u-active u-grey-30" data-u-slide-to="0"></li>
+          <li data-u-target="#carousel-31dd" class="u-grey-30" data-u-slide-to="1"></li>
+        </ol>
+        <div class="u-carousel-inner" role="listbox">
+          <div class="u-active u-align-left u-carousel-item u-container-style u-shape-rectangle u-slide">
+            <div class="u-container-layout u-valign-top u-container-layout-7">
+              <img class="u-image u-image-round u-radius-10 u-image-10" src="{% static "images2/RachelThompson.jfif" %}" alt="" data-image-width="736" data-image-height="1051">
+              <h2 class="u-custom-font u-font-georgia u-subtitle u-text u-text-default u-text-7">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-active-palette-1-light-1 u-text-hover-palette-3-light-1 u-text-palette-4-base u-btn-7" href="https://nicepage.com">ARABIAN NIGHTS</a>
+              </h2>
+            </div>
+          </div>
+          <div class="u-carousel-item u-container-style u-slide u-carousel-item-8">
+            <div class="u-container-layout u-container-layout-8">
+              <h2 class="u-subtitle u-text u-text-8">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-hover-palette-3-base u-text-palette-1-base u-btn-8" href="https://nicepage.com">ALICE in WONDERLAND</a>
+              </h2>
+              <img class="u-image u-image-round u-radius-10 u-image-11" src="{% static "images2/AlyssaDeAsissPortfolio-AlyssaDeAsis-ChildrensbookillustratorPhilippines.png" %}" alt="" data-image-width="500" data-image-height="673">
+            </div>
+          </div>
+        </div>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-60 u-icon-circle u-spacing-9 u-carousel-control-5" href="#carousel-31dd" role="button" data-u-slide="prev">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 477.175 477.175"><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+                    c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"></path></svg>
+          </span>
+          <span class="sr-only">+Previous</span>
+        </a>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-60 u-icon-circle u-spacing-9 u-carousel-control-6" href="#carousel-31dd" role="button" data-u-slide="next">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 477.175 477.175"><path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
+                    c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"></path></svg>
+          </span>
+          <span class="sr-only">+Next</span>
+        </a>
+      </div>
+      <h1 class="u-text u-text-default u-title u-text-9">
+        <a class="u-active-none u-border-2 u-border-palette-5-dark-1 u-btn u-button-style u-hover-none u-none u-text-body-alt-color u-text-hover-palette-5-dark-1 u-btn-9" href="https://nicepage.com">CLASSIC<span class="u-text-grey-70"></span>
+        </a>
+      </h1>
+      <h2 class="u-subtitle u-text u-text-default u-text-10">
+        <a class="u-active-none u-border-2 u-border-palette-4-light-1 u-btn u-button-style u-hover-none u-none u-text-hover-palette-3-dark-1 u-text-palette-3-light-1 u-btn-10" href="https://nicepage.com">KIDS</a>
+      </h2>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-1278"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">contact us</p>
+        <a href="https://www.instagram.com/parsa_.dadar/" class="u-active-none u-border-2 u-border-palette-1-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-top-left-radius-0 u-top-right-radius-0 u-btn-1">parsa_dadar</a>
+      </div></footer>
+</body></html>
