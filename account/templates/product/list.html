@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,9 +33,7 @@
     </head>
     <body>
         <h1>list of products</h1>
-        <span class="aa">
-        <ul><a href="/" >home</a> </ul>
-        </span>
+        <span class="aa"><a  href="/" >home</a></span>
         <div>
             <p class='row'>
                 <span class="title">ID</span>
@@ -44,6 +42,7 @@
                 <span class="title">image</span>
                 <span class="title">Count</span>
                 <span class="title">Conten</span>
+                <span class="title">//</span>
             </p>
             {% for product in page_obj %}
              <p class='row'>
@@ -53,6 +52,7 @@
                 <span class="field"><img width="50px" height="50px" src="{{ product.images.url }}" alt="{{ product.name }}"></span>
                 <span class="field">{{ product.count}}</span>
                 <span class="field">{{ product.conten}}</span>
+                <span class="field"><a href="{% url "product:delete" product.id %}" >Delete</a> | <a href="{% url 'product:update' product.id %}" id="pro_edit">Edit</a></span>
             </p>
             {% endfor %}
         </div>
@@ -70,62 +70,6 @@
             {% endif %}
     </span>
     </div>
-    <script>
-    {#let pro_delete = document.getElementById("pro_delete");#}
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-    const csrftoken = getCookie('csrftoken');
 
-
-
-    {#function pro_delete (id){#}
-    {#   // Old compatibility code, no longer needed.#}
-    {#    if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+, etc.#}
-    {#        httpRequest = new XMLHttpRequest();#}
-    {#    } else if (window.ActiveXObject) { // IE 6 and older#}
-    {#        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");#}
-    {#    }#}
-    {#    httpRequest.onreadystatechange = () => {#}
-    {#        // Process the server response here.#}
-    {#        if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {#}
-    {#            console.log(httpRequest.responseText);#}
-    {#        } else {#}
-    {#            // Not ready yet.#}
-    {#            console.log(httpRequest.readyState, httpRequest.status);#}
-    {#        }#}
-    {#    };#}
-    {#    httpRequest.open('POST', '/product/delete/'+id, true);#}
-    {#    httpRequest.send("csrfmiddlewaretoken":csrftoken);#}
-    {#}#}
-        function pro_delete (id) {
-            console.log("injam");
-            $.post('/product/delete/' + id,
-                {
-                    csrfmiddlewaretoken: csrftoken
-                },
-                function (data, status) {
-                    if(data === "OK"){
-                        document.getElementById("pro_"+id).style.display = "none";
-                    }
-
-
-                }
-            );
-        }
-
-</script>
-    </body>
+</body>
 </html>

@@ -1,27 +1,25 @@
 from urllib import response
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect,Http404
-from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.shortcuts import render, redirect, reverse
 from django.template.loader import render_to_string
-from datetime import  datetime
-from .models import products,category,subcategory
+from datetime import datetime
+from .models import products, category, subcategory
 from django.views.generic import TemplateView, View, DetailView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator
 
 class ClassIndex(TemplateView):
     template_name = "product/list.html"
-    # http_method_names = ["get"]
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pros = products.objects.all()
-        context['products'] = pros  # you want to set Object Model, if you can.
+        context['products'] = pros
         return context
 
     def get(self, request, *args, **kwargs):
         print(args, kwargs, request.GET)
-        # self.template_name
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
 class ClassViewIndex(View):
@@ -30,16 +28,14 @@ class ClassViewIndex(View):
     def get(self, request, *args, **kwargs):
         context = {}
         pros = products.objects.all()
-        context['products'] = pros  # you want to set Object Model, if you can.
-        # print(args, kwargs, request.GET)
-        # self.template_name
+        context['products'] = pros
         return render(request, self.template_name, context)
 
 
 class ClassDetails(DetailView):
     model = products
 
-    # if you want change template name
+
     def get_template_names(self):
         return "product/details.html"
 
@@ -52,7 +48,7 @@ class ClassDetails(DetailView):
 
 class ClassList(ListView):
     model = products
-    paginate_by = 5  # if pagination is desired
+    paginate_by = 5 d
     page_kwarg = "dadar"
 
     def get_context_data(self, **kwargs):
@@ -63,7 +59,7 @@ class ClassList(ListView):
 
 
 def index(req):
-    pros = products.objects.all()
+    pros = products.objects.get_queryset().order_by('id')
     paginator = Paginator(pros, 5)
     page_number = req.GET.get('dadar')
     page_obj = paginator.get_page(page_number)
@@ -82,36 +78,14 @@ def details(req,id):
         return Http404
 
 def delete(req,id):
-        # todo: delete product
-        # delete product [produce:get object Products - delete method]
-        # if ajax : return message
-        # if http request send : redirect [list]
+       pro = products.objects.get(id=id).delete()
+       return render(req, "product/list.html", {"product":pro})
 
-        # print(req.is_ajax())
-        # return HttpResponse("OK")
-
-        try:
-            pros = products.objects.get(id=id)
-            pros.delete()
-            if req.is_ajax():
-                return HttpResponse("OK")
-            else:
-                return redirect(reverse("product:list"))
-        except products.DoesNotExist:
-            if req.is_ajax():
-                return HttpResponse("Error")
-            else:
-                return redirect(reverse("product:list"))
-        # return redirect(reverse("product:list"))
 
 
 def delete_noajax(req, id):
-    # todo: delete product
-    # delete product [produce:get object Products - delete method]
-    # if ajax : return message
-    # if http request send : redirect [list]
     try:
-        pro = products.objects.get(id=id)
+        pro = products.objects.get(id=id).delete()
         return render(req, "product/delete_noajax.html", {"product": pro})
     except products.DoesNotExist:
         return redirect(reverse("product:list"))
@@ -135,6 +109,7 @@ def update(req,id):
         return redirect(reverse("product:list"))
     else:
         return Http404
+
 def ebook(req):
     pros = products.objects.all()
     paginator = Paginator(pros, 5)

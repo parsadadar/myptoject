@@ -10,6 +10,7 @@ urlpatterns = [
     path('details/<int:id>', details,name='details'),
     path('delete/<int:id>/', delete ),
     path('update/<int:id>', update, name="update"),
+    path('delete/<int:id>', delete, name="delete"),
     path('delete/noajax/<int:id>', delete_noajax, name="delete_noajax"),
     path('class_templateview_index/', ClassIndex.as_view(), name="class_templateview_list"),
     path('class_view_index/', ClassViewIndex.as_view(), name="class_view_list"),

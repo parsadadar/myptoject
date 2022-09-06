@@ -46,9 +46,21 @@ def user_login(req):
         form = LoginForm()
     return render(req, 'site/login.html', {'form': form})
 
+def update(req,id):
+    if req.method == "POST":
+        username = req.POST['username']
+        password = req.POST['password']
+        email = req.POST['password']
+        myuser = User.objects.get (pk=id)
+        myuser.username=username
+        myuser.username=password
+        myuser.username=email
+        myuser.save()
+        return render(req, 'account/home.html')
+
 
 def log_out(req):
     logout(req)
-    return render(req, 'site/logout.html')
+    return render(req, 'account/home.html')
 
 
