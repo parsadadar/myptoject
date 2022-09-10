@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Triathlon Club, Buildan inclusivecommunity, Member Login, INTUITIVE">
+    <meta name="description" content="">
+    <title>home</title>
+    <link rel="stylesheet" href={%  static "css5/nicepage.css" %} media="screen">
+<link rel="stylesheet" href={% static "css5/home.css" %} media="screen">
+    <script class="u-script" type="text/javascript" src={% static "js5/jquery.js" %} "="" defer=""></script>
+    <script class="u-script" type="text/javascript" src={% static "js5/nicepage.js" %} "="" defer=""></script>
+    <meta name="generator" content="Nicepage 4.17.10, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "sign_up",
+		"logo": "images/default-logo.png"
+}</script>
+    <meta name="theme-color" content="#282828">
+    <meta property="og:title" content="home">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-cf2e"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+          <img src={% static "images5/default-logo.png" %} class="u-logo-image u-logo-image-1">
+        </a>
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/" style="padding: 10px 20px;">home</a>
+</li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/">home</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+      </div></header>
+    <section class="u-clearfix u-gradient u-section-1" id="carousel_9dbc">
+      <div class="u-align-center u-container-style u-group u-shape-rectangle u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+          <h2 class="u-text u-text-body-alt-color u-text-default u-text-1">Profile</h2>
+                    {% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+            <div class="u-align-center u-form u-form-1">
+            <form method="post" enctype="multipart/form-data" class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form" style="padding: 10px;" data-services="9d76cbddccc1903aa4b702790518915a" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="u-form-group u-form-name">
+                <label for="name-0c55" class="u-label">Username</label><br>
+                {{ user_form.username }}<br>
+                <label for="email-0c55" class="u-label">Email</label><br>
+                {{ user_form.email }}
+              </div>
+              <div class="u-form-group u-form-group-3">
+                <label for="text-2454" class="u-label">Change photo</label>
+                {{ profile_form.avatar }}
+              </div>
+              <div class="u-align-left u-form-group u-form-submit">
+                <button class="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">save changes</button>
+                <input type="submit" value="submit" class="u-form-control-hidden">
+              </div>
+              <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+              <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+              <input type="hidden" value="" name="recaptchaResponse">
+            </form>
+          </div>
+          <div class="u-border-3 u-border-grey-75 u-container-style u-group u-hover-feature u-palette-5-base u-preserve-proportions u-shape-circle u-group-2">
+            <div class="u-container-layout u-valign-middle u-container-layout-2">
+              <img class="u-image u-image-circle u-image-contain u-preserve-proportions u-image-1" src="{{ user.profile.avatar.url }}" alt="" data-image-width="256" data-image-height="256">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-a593"><div class="u-align-left u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <a href="https://nicepage.review" class="u-active-none u-border-2 u-border-palette-1-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-text-hover-palette-4-dark-1 u-text-palette-4-light-1 u-top-left-radius-0 u-top-right-radius-0 u-btn-1">@parsa_dadar</a>
+      </div></footer>
+  
+</body></html>

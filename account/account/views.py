@@ -7,6 +7,7 @@ from django.template.loader import render_to_string
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from .forms import LoginForm
+from django.contrib.auth.views import LoginView
 
 
 def index(req):
@@ -21,7 +22,7 @@ def signup(req):
         if username and password and email:
             user = User.objects.create_user(username, password, email)
             user.save()
-            return redirect(req,"site/login.html")
+            return redirect(req, "site/login.html")
         else:
             return redirect("sign_up")
     return render(req, "site/sign_up.html")

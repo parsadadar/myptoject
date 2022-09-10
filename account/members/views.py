@@ -1,55 +1,54 @@
-from urllib import response
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.template.loader import render_to_string
-from django.contrib.auth import login,authenticate
-from django.contrib.auth.models import User
-
-vips={
-    'a21':'stiv_jobs',
-    'b32':'bill_gates',
-    'c54':'ahmad_zoqi',
-    'd18':'parsa_dadar',
-    'e13':'jeyzi',
-}
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .forms import UpdateUserForm, UpdateProfileForm
+from django.urls import reverse_lazy, reverse
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views import View
+from .forms import LoginForm
+from django.contrib.auth.views import LoginView
 
 
 
-def special_num(req,cod):
-    vip_codd = list(vips.keys())
-    if cod > len(vip_codd):
-        return HttpResponseNotFound('this code is not exists.')
-    redirect_vip = vip_codd[cod - 1]
-    redirect_url = reverse('010123', args=[redirect_vip])
-    return HttpResponseRedirect(f'/vip/{redirect_vip}')
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'site/change_password.html'
+    success_message = "Successfully Changed Your Password"
+    success_url = reverse_lazy('users-home')
 
+class CustomLoginView(LoginView):
+    form_class = LoginForm
 
-def spec(req):
-    vip_list=list(vips.keys())
-    context={
-        "vips":vip_list
-    }
-    return render(req,'members/vips.html',context)
+    def form_valid(self, form):
+        remember_me = form.cleaned_data.get('remember_me')
 
-def adm(req):
-    return render(req,'members/admin_site.html')
+        if not remember_me:
+            # set session expiry to 0 seconds. So it will automatically close the session after the browser is closed.
+            self.request.session.set_expiry(0)
 
-def special(req,cod):
-    vip_cd=vips.get(cod)
-    if vip_cd is None:
-        response_data=render_to_string('erors/404.html')
-        return HttpResponseNotFound(response_data)
-    context={
-        'data': f'vip id is {vip_cd}',
-        'cod':f'vip cod is {cod}',
-    }
-    return render(req,'members/helo.html',context)
+            # Set session as modified to force data updates/cookie to be saved.
+            self.request.session.modified = True
 
+        # else browser session will be as long as the session cookie time "SESSION_COOKIE_AGE" defined in settings.py
+        return super(CustomLoginView, self).form_valid(form)
 
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='users_profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
 
-
+    return render(request, 'product/profile.html', {'user_form': user_form, 'profile_form': profile_form})
 
 
 
